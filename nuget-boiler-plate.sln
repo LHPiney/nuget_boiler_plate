@@ -1,0 +1,21 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nuget-boiler-plate", "src\nuget-boiler-plate\nuget-boiler-plate.csproj", "{C26D0030-664A-46B9-9259-504381EC3EBE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{8A7590F9-A4A1-4207-90E2-1CD8AF9E93E4}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build-and-publish.yml = .github\workflows\build-and-publish.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C26D0030-664A-46B9-9259-504381EC3EBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C26D0030-664A-46B9-9259-504381EC3EBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C26D0030-664A-46B9-9259-504381EC3EBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C26D0030-664A-46B9-9259-504381EC3EBE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
