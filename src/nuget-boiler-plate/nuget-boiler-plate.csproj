@@ -6,7 +6,6 @@
         <Nullable>enable</Nullable>
         <Title>Nuget Boilerplate</Title>
         <Description>    </Description>
-        <PackageIcon>icon.png</PackageIcon>
         <TargetFrameworks>net6.0;net8.0;net7.0</TargetFrameworks>
     </PropertyGroup>
 
