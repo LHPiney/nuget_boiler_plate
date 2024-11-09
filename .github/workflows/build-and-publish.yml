@@ -20,10 +20,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v2
+      - name: Setup .netcore (6x, 7x, 8x)
+        uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: ${{ matrix.dotnet-version }}
+          dotnet-version: |
+            6.x.x
+            7.x.x
+            8.x.x
 
       - name: Restore dependencies
         run: dotnet restore
