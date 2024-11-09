@@ -31,6 +31,9 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore
 
+      - name: Install dotnet-coverage
+        run: dotnet tool install --global dotnet-coverage
+
       - name: Build
         run: dotnet build --configuration Release --no-restore
 
@@ -43,8 +46,9 @@ jobs:
         run: |
           dotnet tool install --global dotnet-sonarscanner
           export PATH="$PATH:/home/runner/.dotnet/tools"
-          dotnet sonarscanner begin /k:"LHPiney_nuget_boiler_plate" /o:"lhpiney" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.cs.opencover.reportPaths=./TestResults/coverage.opencover.xml
+          dotnet sonarscanner begin /k:"LHPiney_nuget_boiler_plate" /o:"lhpiney" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.cs.vscoveragexml.reportsPaths=./TestResults/coverage.xml
           dotnet build --configuration Release
+          dotnet-coverage collect "dotnet test" -f xml -o "./TestResults/coverage.xml"
           dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
 
       - name: Pack
