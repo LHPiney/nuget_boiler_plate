@@ -11,4 +11,12 @@ public class DummyTest
 
         Assert.NotNull(class1);
     }
+    
+    [Fact]
+    public void Test2()
+    {
+        var class2 = new Class2();
+
+        Assert.NotNull(class2);
+    }
 }
