@@ -14,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        dotnet-version: ['6.x', '7.x', '8.x', '9.x']
+        dotnet-version: ['6.0.x', '7.0.x', '8.0.x', '9.0.x']
 
     steps:
       - name: Checkout code
@@ -57,3 +57,8 @@ jobs:
 
       - name: Pack
         run: dotnet pack --configuration Release --no-restore --output ./nupkg
+
+#      - name: Publish to NuGet
+#        env:
+#          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+#        run: dotnet nuget push ./nupkg/*.nupkg --api-key $NUGET_API_KEY --source https://api.nuget.org/v3/index.json
