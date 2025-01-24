@@ -57,6 +57,8 @@ jobs:
           dotnet-coverage collect "dotnet test" -f opencover -o "./TestResults/coverage.opencover.xml"
           echo "After coverage collection, TestResults directory contents:"
           ls -la ./TestResults
+          echo "Coverage report contents:"
+          cat ./TestResults/coverage.opencover.xml
           dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
 
       - name: Pack
