@@ -32,11 +32,20 @@ jobs:
         run: dotnet tool install --global dotnet-coverage
 
       - name: Build
-        run: dotnet build --configuration Release --no-restore
+        run: |
+          if [[ ${{ matrix.dotnet-version }} == 6.* ]]; then
+            dotnet build --configuration Release --no-restore --framework net6.0
+          else
+            dotnet build --configuration Release --no-restore
+          fi
 
       - name: Test
         run: |
-          dotnet test --configuration Release --no-restore --collect:"XPlat Code Coverage" --results-directory ./TestResults
+          if [[ ${{ matrix.dotnet-version }} == 6.* ]]; then
+            dotnet test --configuration Release --no-restore --framework net6.0 --collect:"XPlat Code Coverage" --results-directory ./TestResults
+          else
+            dotnet test --configuration Release --no-restore --collect:"XPlat Code Coverage" --results-directory ./TestResults
+          fi
           echo "Test results directory contents:"
           ls -la ./TestResults
           dotnet-coverage collect "dotnet test" -f opencover -o "./TestResults/coverage.opencover.xml"
