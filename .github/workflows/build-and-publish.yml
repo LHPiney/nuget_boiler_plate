@@ -1,4 +1,4 @@
-name: Build, Test, and Analyze with SonarCloud
+name: Build, Test, and Analyze with SonarQube
 
 on:
   push:
@@ -14,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        dotnet-version: ['8.x']
+        dotnet-version: ['6.x', '7.x', '8.x', '9.x']
 
     steps:
       - name: Checkout code
@@ -23,11 +23,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: |
-            6.x.x
-            7.x.x
-            8.x.x
-            9.x.x
+          dotnet-version: ${{ matrix.dotnet-version }}
 
       - name: Restore dependencies
         run: dotnet restore
@@ -47,27 +43,17 @@ jobs:
           echo "Coverage report contents:"
           cat ./TestResults/coverage.opencover.xml
 
-      - name: SonarCloud Scan
+      - name: SonarQube Scan
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           dotnet tool install --global dotnet-sonarscanner
           export PATH="$PATH:/home/runner/.dotnet/tools"
-          echo "Before SonarCloud scan, TestResults directory contents:"
+          echo "Before SonarQube scan, TestResults directory contents:"
           ls -la ./TestResults
-          dotnet sonarscanner begin /k:"LHPiney_nuget_boiler_plate" /o:"lhpiney" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.cs.opencover.reportsPaths=./TestResults/coverage.opencover.xml
+          dotnet sonarscanner begin /k:"LHPiney_nuget_boiler_plate" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.cs.opencover.reportsPaths=./TestResults/coverage.opencover.xml
           dotnet build --configuration Release
-          dotnet-coverage collect "dotnet test" -f opencover -o "./TestResults/coverage.opencover.xml"
-          echo "After coverage collection, TestResults directory contents:"
-          ls -la ./TestResults
-          echo "Coverage report contents:"
-          cat ./TestResults/coverage.opencover.xml
           dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
 
       - name: Pack
         run: dotnet pack --configuration Release --no-restore --output ./nupkg
-
-#      - name: Publish to NuGet
-#        env:
-#          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
-#        run: dotnet nuget push ./nupkg/*.nupkg --api-key $NUGET_API_KEY --source https://api.nuget.org/v3/index.json
