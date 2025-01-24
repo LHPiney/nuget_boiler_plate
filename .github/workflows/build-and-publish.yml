@@ -33,24 +33,14 @@ jobs:
 
       - name: Build
         run: |
-          if [[ ${{ matrix.dotnet-version }} == 6.* ]]; then
-            dotnet build --configuration Release --no-restore --framework net6.0
-          else
-            dotnet build --configuration Release --no-restore
-          fi
+          dotnet build --configuration Release --no-restore
 
       - name: Test
         run: |
-          if [[ ${{ matrix.dotnet-version }} == 6.* ]]; then
-            dotnet test --configuration Release --no-restore --framework net6.0 --collect:"XPlat Code Coverage" --results-directory ./TestResults
-          else
-            dotnet test --configuration Release --no-restore --collect:"XPlat Code Coverage" --results-directory ./TestResults
-          fi
+          dotnet test --configuration Release --no-restore --collect:"XPlat Code Coverage" --results-directory ./TestResults
           echo "Test results directory contents:"
           ls -la ./TestResults
           dotnet-coverage collect "dotnet test" -f opencover -o "./TestResults/coverage.opencover.xml"
-          echo "Coverage report contents:"
-          cat ./TestResults/coverage.opencover.xml
 
       - name: SonarQube Scan
         env:
