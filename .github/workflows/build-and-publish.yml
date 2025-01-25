@@ -69,8 +69,8 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           dotnet sonarscanner begin \
-            /k:"tu-proyecto-key" \
-            /o:"tu-organizacion" \
+            /k:"LHPiney_nuget_boiler_plate" \
+            /o:"lhpiney" \
             /d:sonar.login="${{ secrets.SONAR_TOKEN }}" \
             /d:sonar.host.url="https://sonarcloud.io" \
             /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
@@ -121,9 +121,9 @@ jobs:
 
       - name: Build
         run: dotnet build ${{ env.SOLUTION_NAME }} --configuration Release --no-restore
-
+  
       - name: Pack
         run: dotnet pack src/nuget-boiler-plate/nuget-boiler-plate.csproj --configuration Release --no-build --output nupkgs
 
-      - name: Push to NuGet
-        run: dotnet nuget push nupkgs/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+    #  - name: Push to NuGet
+    #    run: dotnet nuget push nupkgs/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
