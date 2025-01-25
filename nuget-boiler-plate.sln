@@ -8,7 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\build-and-publish-v2.yml = .github\workflows\build-and-publish-v2.yml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nuget.boilerplate.test", "nuget.boilerplate.test\nuget.boilerplate.test.csproj", "{146F3571-987D-4AAE-8E11-3B585001A9B7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nuget.boilerplate.test", "src\nuget.boilerplate.test\nuget.boilerplate.test.csproj", "{146F3571-987D-4AAE-8E11-3B585001A9B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

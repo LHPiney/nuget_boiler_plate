@@ -2,6 +2,7 @@
 
 namespace nuget.boilerplate.test;
 
+
 public class Test2
 {
     [Fact]

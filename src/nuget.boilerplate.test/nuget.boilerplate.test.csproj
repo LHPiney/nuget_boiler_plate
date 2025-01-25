@@ -24,10 +24,11 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Using Include="Xunit"/>
+        <Using Include="Xunit" />
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\nuget-boiler-plate\nuget-boiler-plate.csproj" />
       <ProjectReference Include="..\src\nuget-boiler-plate\nuget-boiler-plate.csproj" />
     </ItemGroup>
 

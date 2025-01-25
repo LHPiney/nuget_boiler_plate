@@ -7,9 +7,10 @@ public class DummyTest
     [Fact]
     public void Test1()
     {
-        var class1 = new Class1();
+        var class1 = new Class1("John", 30);
 
-        Assert.NotNull(class1);
+        Assert.Equal("John", class1.GetName());
+        Assert.Equal(30, class1.GetAge());
     }
     
     [Fact]
