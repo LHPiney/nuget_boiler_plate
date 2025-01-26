@@ -5,7 +5,7 @@ on:
     types: [published]
 
 permissions:
-  contents: write    # Esto es necesario para poder subir assets a la release
+  contents: write   
 
 env:
   SOLUTION_NAME: 'nuget-boiler-plate.sln'
