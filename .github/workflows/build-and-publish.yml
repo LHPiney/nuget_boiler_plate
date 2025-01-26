@@ -80,7 +80,9 @@ jobs:
 
       - name: Test with coverage
         run: |
-          dotnet-coverage collect 'dotnet test ${{ env.SOLUTION_NAME }} --no-build' -f xml -o 'coverage.xml'
+          sudo apt-get update
+          sudo apt-get install -y libxml2
+          dotnet-coverage collect "dotnet test ${{ env.SOLUTION_NAME }} --configuration Release --no-build" -f xml -o "coverage.xml"
 
       - name: End Sonar analysis
         env:
