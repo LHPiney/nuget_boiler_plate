@@ -10,7 +10,7 @@
         <LangVersion>latest</LangVersion>
         
         <!-- Información del paquete NuGet -->
-        <PackageId>$(GITHUB_REPOSITORY_OWNER).nuget-boiler-plate</PackageId>
+        <PackageId>Magnett.Nuget.Boilerplate</PackageId>
         <Authors>LHPiney</Authors>
         <Company>Magnett</Company>
         <Description>Nuget Boilerplate just for testing purposes</Description>

@@ -5,14 +5,12 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-  release:
-    types: [published]
 
 env:
   SOLUTION_NAME: 'nuget-boiler-plate.sln'
 
 jobs:
-  analyze-and-build:
+  build-and-analyze:
     name: Build and analyze
     runs-on: ubuntu-latest
     
