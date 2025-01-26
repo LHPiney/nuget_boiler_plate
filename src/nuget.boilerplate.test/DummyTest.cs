@@ -20,4 +20,13 @@ public class DummyTest
 
         Assert.NotNull(class2);
     }
+
+    [Fact]
+    public void Test3()
+    {
+        var class3 = new Class3("John", 30);
+
+        Assert.Equal("John", class3.GetName());
+        Assert.Equal(30, class3.GetAge());
+    }
 }
