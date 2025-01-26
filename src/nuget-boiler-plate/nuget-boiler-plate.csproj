@@ -1,23 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <RootNamespace>nuget_boiler_plate</RootNamespace>
+        <RootNamespace>Magnett.Nuget.Boilerplate</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <Title>Nuget Boilerplate</Title>
-        <Description>    </Description>
+        <Description>Nuget Boilerplate just for testing purposes</Description>
         <TargetFrameworks>net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
         <LangVersion>latest</LangVersion>
         
         <!-- Información del paquete NuGet -->
-        <PackageId>TuNombrePaquete</PackageId>
-        <Authors>Tu Nombre</Authors>
-        <Company>Tu Compañía</Company>
-        <Description>Descripción de tu paquete</Description>
+        <PackageId>$(GITHUB_REPOSITORY_OWNER).nuget-boiler-plate</PackageId>
+        <Authors>LHPiney</Authors>
+        <Company>Magnett</Company>
+        <Description>Nuget Boilerplate just for testing purposes</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <PackageProjectUrl>https://github.com/tu-usuario/tu-repo</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/tu-usuario/tu-repo</RepositoryUrl>
-        <PackageTags>tag1 tag2</PackageTags>
+        <PackageProjectUrl>https://github.com/LHPiney/nuget-boilerplate</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/$(GITHUB_REPOSITORY)</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>net6.0;net7.0;net8.0;net9.0;nuget;boilerplate</PackageTags>
         
         <!-- Configuración de documentación XML -->
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
